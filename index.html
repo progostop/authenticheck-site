@@ -7,11 +7,234 @@
   <meta name="description" content="AuthentiCheck — AI 생성 이미지/영상/음성 탐지 솔루션" />
   <link rel="icon" href="data:;base64,iVBORw0KGgo="> 
   <style>
-    /* ... truncated for brevity in this example ... */
+    :root{
+      --bg:#071428; /* deep navy */
+      --card:#0b2740;
+      --muted:#99b0c7;
+      --accent:#00d4ff; /* neon cyan */
+      --accent-2:#7b61ff; /* violet */
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      --maxw:1100px;
+      --gap:24px;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(18,50,80,0.45), transparent),
+                  linear-gradient(180deg, rgba(7,20,40,1) 0%, rgba(2,10,20,1) 100%);
+      color:#e6f3ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:40px
+    }
+    .logo{display:flex;align-items:center;gap:12px}
+    .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021427}
+    .brand{font-weight:600;font-size:18px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:32px;align-items:center;margin-bottom:40px}
+    .eyebrow{color:var(--accent);font-weight:600;margin-bottom:10px}
+    h1{font-size:36px;margin:0 0 18px 0}
+    p.lead{color:var(--muted);margin:0 0 20px 0}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:600}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021427}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+
+    /* feature grid */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+    .feat{background:var(--card);padding:18px;border-radius:12px}
+    .feat h4{margin:0 0 8px 0}
+    .muted{color:var(--muted);font-size:14px}
+
+    .section{margin-bottom:40px}
+    .two-col{display:grid;grid-template-columns:1fr 340px;gap:24px}
+
+    footer{padding:32px 0;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+    /* responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .two-col{grid-template-columns:1fr}
+      nav{display:none}
+    }
+    @media(max-width:520px){
+      .features{grid-template-columns:1fr}
+      h1{font-size:28px}
+    }
+
+    /* subtle glow accents */
+    .accent-line{height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));margin-top:12px;margin-bottom:18px}
+
+    /* code-like pill */
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:600;color:var(--muted);font-size:13px}
+
+    /* contact card */
+    .contact{display:flex;flex-direction:column;gap:8px}
+    .doc-link{display:inline-block;padding:10px 12px;border-radius:10px;background:rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--accent);font-weight:600}
   </style>
 </head>
 <body>
-  <!-- full content omitted in this python context -->
-  AuthentiCheck Landing Page
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <div class="mark">AC</div>
+        <div>
+          <div class="brand">AuthentiCheck</div>
+          <div class="muted" style="font-size:12px;margin-top:2px">AI-generated content 검증 솔루션</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#solution">솔루션</a>
+        <a href="#tech">기술</a>
+        <a href="#use">활용분야</a>
+        <a href="#contact">문의</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">신뢰 가능한 디지털 콘텐츠</div>
+          <h1>AI 생성물의 진위를 빠르고 정확하게 판별합니다</h1>
+          <p class="lead">AuthentiCheck는 이미지·영상·음성 등 AI 생성 콘텐츠를 탐지하는 엔터프라이즈용 솔루션입니다. 높은 탐지율(90~99%)과 API 연동으로 B2B, B2G 환경에 최적화되어 있습니다.</p>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">문의하기</button>
+            <a class="btn btn-ghost" href="#tech">기술 보기</a>
+          </div>
+          <div class="accent-line"></div>
+          <div style="margin-top:18px">
+            <span class="pill">A/V/I 탐지</span>
+            <span class="pill" style="margin-left:8px">API 제공</span>
+            <span class="pill" style="margin-left:8px">MLOps</span>
+          </div>
+        </div>
+
+        <aside class="card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="font-weight:700">제품 하이라이트</div>
+            <div class="muted">정밀도 90~99%</div>
+          </div>
+          <ul class="muted" style="padding-left:18px;margin:0">
+            <li>RetinaFace 기반 전처리</li>
+            <li>(2+1)D CNN + ViT 하이브리드 모델</li>
+            <li>Localization &amp; 다국어 지원</li>
+            <li>경량화 모델 옵션 (Tiny-LaDeDa)</li>
+          </ul>
+          <div style="margin-top:18px">
+            <a class="doc-link" href="/mnt/data/AuthentiCheck.pdf" target="_blank" rel="noopener">제품 소개서 (PDF 열기)</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="solution" class="section">
+        <h2 style="margin:0 0 8px 0">문제와 솔루션</h2>
+        <p class="muted" style="margin-top:6px">급속도로 늘어나는 AI 생성 콘텐츠는 신뢰성 문제를 야기합니다. AuthentiCheck는 이 문제를 해결하기 위해 고안된 탐지 플랫폼입니다.</p>
+        <div class="features" style="margin-top:16px">
+          <div class="feat">
+            <h4>이미지 탐지</h4>
+            <div class="muted">합성·변형 이미지 탐지 및 생성 흔적 분석</div>
+          </div>
+          <div class="feat">
+            <h4>영상 탐지</h4>
+            <div class="muted">프레임 기반의 시공간 특성 분석으로 딥페이크 판별</div>
+          </div>
+          <div class="feat">
+            <h4>음성 탐지</h4>
+            <div class="muted">합성 음성의 특징 추출 및 진위 확률 산출</div>
+          </div>
+          <div class="feat">
+            <h4>API 연동</h4>
+            <div class="muted">RESTful API로 빠른 통합, 기업용 SLA 제공</div>
+          </div>
+          <div class="feat">
+            <h4>Localization</h4>
+            <div class="muted">다국어 지원, 지역별 규정에 맞춘 리포트</div>
+          </div>
+          <div class="feat">
+            <h4>MLOps</h4>
+            <div class="muted">모델 모니터링·버전관리·지속 학습 파이프라인</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tech" class="section two-col">
+        <div>
+          <h3 style="margin-top:0">기술적 접근</h3>
+          <p class="muted">RetinaFace로 얼굴 및 오브젝트를 전처리하고, 스페이셜(2D) + 템포럴(1D)을 결합한 (2+1)D CNN으로 특징을 추출합니다. 추출된 특징은 Vision Transformer로 고차원 표현을 학습하여 높은 판별력을 달성합니다.</p>
+
+          <h4 style="margin-top:16px">모델 성능</h4>
+          <p class="muted">테스트 환경에서 전형적인 시나리오에 대해 90% 이상, 특정 구성에서는 99%에 가까운 탐지율을 보였습니다. (데이터셋 및 환경에 따라 상이할 수 있음)</p>
+
+          <h4 style="margin-top:16px">배포 옵션</h4>
+          <ul class="muted" style="padding-left:18px">
+            <li>온프레미스, 프라이빗 클라우드</li>
+            <li>경량 에지 모델 제공</li>
+            <li>엔터프라이즈급 API 및 보안 인증</li>
+          </ul>
+        </div>
+
+        <aside class="card">
+          <div style="font-weight:700;margin-bottom:10px">데모 / POC</div>
+          <div class="muted">B2B·B2G 환경에서의 PoC 진행 경험이 있으며, iOS/웹 클라이언트와의 연동 사례가 있습니다.</div>
+          <div style="margin-top:12px">
+            <a class="doc-link" href="#contact" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">PoC 문의</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="use" class="section">
+        <h3 style="margin-top:0">활용 분야</h3>
+        <div class="muted" style="margin-top:8px">미디어 검증, 법집행 지원, 기업 브랜드 보호, 선거 관련 허위정보 모니터링 등 다양한 영역에서 활용 가능합니다.</div>
+      </section>
+
+      <section id="roadmap" class="section">
+        <h3 style="margin-top:0">로드맵</h3>
+        <ol class="muted" style="padding-left:18px;margin-top:8px">
+          <li>R&D · 초기 B2C/POC (완료/진행)</li>
+          <li>iOS 앱 및 B2G PoC 확장</li>
+          <li>API 고도화, MLOps 정식화</li>
+        </ol>
+      </section>
+
+      <section id="contact" class="section">
+        <h3 style="margin-top:0">문의하기</h3>
+        <div class="two-col" style="gap:16px">
+          <div>
+            <p class="muted">제품 데모나 PoC, 기술 제휴 문의는 아래 연락처로 주세요.</p>
+            <p style="margin-top:8px">📧 <strong>contact@authenticheck.example</strong></p>
+            <p class="muted" style="margin-top:12px">원하시면 이 페이지의 HTML을 바로 가비아에 올릴 수 있도록 zip 파일로 묶어 드릴게요.</p>
+          </div>
+          <aside class="card contact">
+            <div style="font-weight:700">빠른 자료</div>
+            <a class="doc-link" href="/mnt/data/AuthentiCheck.pdf" target="_blank" rel="noopener">제품 소개서 (PDF)</a>
+            <a class="doc-link" href="mailto:contact@authenticheck.example">이메일 보내기</a>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© AuthentiCheck</div>
+      <div class="muted">사업자등록 · 주소 · 기타 정보</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // small accessibility: focus outlines for keyboard users
+    document.addEventListener('keyup', (e)=>{
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
 </body>
 </html>
